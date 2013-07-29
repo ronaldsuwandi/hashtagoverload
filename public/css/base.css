@@ -1,0 +1,49 @@
+/* fonts */
+@font-face {
+  font-family: 'Didot';
+  src: url('../font/didot.ttf');
+}
+@font-face {
+  font-family: 'GillSans';
+  src: url('../font/gillsans.ttf');
+}
+@font-face {
+  font-family: 'Hoefler Text';
+  src: url('../font/hoefler_text.ttf');
+}
+@font-face {
+  font-family: 'Marion';
+  src: url('../font/marion.ttf');
+}
+
+/* base */
+* {
+  box-sizing: border-box;
+  margin-left: 5px;
+  margin-right: 5px;
+  color: #333333
+}
+
+body {
+  max-width: 1024px;
+}
+
+.result-box {
+  /*visibility: hidden;*/
+}
+
+.result {
+  border: 0;
+  margin-top: 5px;
+  min-width:100%;
+}
+
+.result:focus {
+  outline-width: 0;
+}
+
+h1 {
+  margin-top:10px;
+  margin-bottom:10px;
+}
+/**/
