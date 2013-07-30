@@ -9,6 +9,8 @@ var $copy;
 var $suggestions;
 var $suggestionMain;
 var $hashtags;
+var $bigInputButton;
+var $smallInputButton;
 
 var spinnerOpts = {
   lines: 9, // The number of lines to draw
@@ -34,10 +36,12 @@ var spinner;
 $(function() {
   $mainForm = $('.js-main-input-form');
   $inputText = $('.js-input-text');
-  $inputButton = $('.input-button');
+  $inputButton = $('.js-input-button');
   $suggestions = $('.suggestions');
   $suggestionMain = $('.suggestion-main');
   $copy = $('.copy');
+  $bigInputButton = $('.big-input-button');
+  $smallInputButton = $('.small-input-button');
 
   $('[data-typer-targets]').typer()
   spinner = new Spinner(spinnerOpts);
@@ -50,6 +54,13 @@ $(function() {
       e.preventDefault();
       $inputButton.click();
     }
+  });
+
+  $bigInputButton.click(function(e) {
+    $inputButton.click();
+  });
+  $smallInputButton.click(function(e) {
+    $inputButton.click();
   });
 
   $inputButton.click(function process(e) {
