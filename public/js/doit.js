@@ -7,13 +7,37 @@ var $result;
 var clipboard;
 var $copy;
 var $suggestions;
+var $suggestionMain;
+
+var spinnerOpts = {
+  lines: 9, // The number of lines to draw
+  length: 1, // The length of each line
+  width: 3, // The line thickness
+  radius: 5, // The radius of the inner circle
+  corners: 1, // Corner roundness (0..1)
+  rotate: 0, // The rotation offset
+  direction: 1, // 1: clockwise, -1: counterclockwise
+  color: '#000', // #rgb or #rrggbb
+  speed: 0.8, // Rounds per second
+  trail: 42, // Afterglow percentage
+  shadow: false, // Whether to render a shadow
+  hwaccel: false, // Whether to use hardware acceleration
+  className: 'loading', // The CSS class to assign to the spinner
+  zIndex: 2e9, // The z-index (defaults to 2000000000)
+  top: 'auto', // Top position relative to parent in px
+  left: 'auto' // Left position relative to parent in px
+};
+
+var spinner;
 
 $(function() {
   $mainForm = $('.js-main-input-form');
   $inputText = $('.js-input-text');
   $inputButton = $('.input-button');
   $suggestions = $('.suggestions');
+  $suggestionMain = $('.suggestion-main');
   $copy = $('.copy');
+  spinner = new Spinner(spinnerOpts);
 
   $inputText.keypress(function(e) {
     if (e.keyCode === 13) {
@@ -28,6 +52,8 @@ $(function() {
     if (!text) return;
 
     var hashtags = hashtagify(text);
+    $suggestions.empty();
+
     findSuggestions(hashtags, function(suggestions) {
       for (var i=0;i<suggestions.length;i++) {
         var hash = '#' + suggestions[i].replace(/\s/,'-');
@@ -44,8 +70,6 @@ $(function() {
     });
 
     $inputText.val(hashtags.trim());
-    $suggestions.empty();
-
     copyAll();
   });
 });
@@ -74,6 +98,10 @@ function hashtagify(text) {
 function findSuggestions(text, callback) {
   var split = text.split(/\s/);
   if (split instanceof Array) {
+
+    spinner.spin();
+    $suggestions.append(spinner.el);
+
     // only get first word hurrdurr
     var word = split[0].trim().replace(/#/,'');
     var ajaxUrl = '/api/'+word;
@@ -81,9 +109,11 @@ function findSuggestions(text, callback) {
     $.ajax({
       url: ajaxUrl,
       success: function(result) {
+        spinner.stop();
         callback(result);
       },
       error: function(jqXHR, textStatus, err) {
+        spinner.stop();
         console.error(err);
         callback([]);
       }

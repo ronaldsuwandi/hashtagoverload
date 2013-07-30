@@ -74,3 +74,16 @@ h1 {
 .suggestion-main {
   margin-top: 5px;
 }
+
+.loading {
+  display: inline-block;
+  position: relative;
+}
+
+.l-suggestion-main {
+  margin: 5px 0px 5px 0px;
+}
+
+.l-selected-main {
+  margin: 5px 0px 5px 0px;
+}

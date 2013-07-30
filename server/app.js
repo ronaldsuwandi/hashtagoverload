@@ -58,10 +58,13 @@ function getSynonyms(word, res) {
         resultWords = _.flatten(resultWords);
       };
 
-      // limit 3 answers
-      return res.send(_.first(resultWords, 3));
+      // limit 6 answers
+      return res.send(_.first(resultWords, 6));
     } else {
       return res.send(body);
     }
   });
 }
+
+// location-based (wwdc conference)
+// freinds
