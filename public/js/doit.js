@@ -2,37 +2,57 @@
 
 var $mainForm;
 var $inputText;
+var $inputButton;
 var $result;
-var $copyButton;
-var $resultBox;
+var clipboard;
+var $copy;
+var $suggestions;
 
 $(function() {
   $mainForm = $('.js-main-input-form');
   $inputText = $('.js-input-text');
-  $result = $('.js-result');
-  $copyButton = $('.copy-clipboard');
-  $resultBox = $('.result-box');
+  $inputButton = $('.input-button');
+  $suggestions = $('.suggestions');
+  $copy = $('.copy');
 
-  $copyButton.click(copyAll);
-  // $result.focus(copyAll);
+  $inputText.keypress(function(e) {
+    if (e.keyCode === 13) {
+      $inputButton.click();
+    }
+  });
 
-  $mainForm.submit(function process(e) {
+  $inputButton.click(function process(e) {
     var text = $inputText.val();
     if (text) text = text.trim();
 
     if (!text) return;
 
     var hashtags = hashtagify(text);
+    findSuggestions(hashtags, function(suggestions) {
+      for (var i=0;i<suggestions.length;i++) {
+        var hash = '#' + suggestions[i].replace(/\s/,'-');
+        var html = $.parseHTML('<div class="l-suggestion suggestion ' +
+          'js-suggestion">'+hash+'</div>');
+        $suggestions.append(html);
+      }
 
-    // $result.text(hashtags);
-    // $result.val(hashtags.trim());
-    // $resultBox.css('visibility', 'visible');
+      var $suggestion = $('.js-suggestion');
+      $suggestion.click(function(e) {
+        addText(this.innerText);
+        copyAll();
+      });
+    });
 
     $inputText.val(hashtags.trim());
+    $suggestions.empty();
 
     copyAll();
   });
 });
+
+function addText(suggested) {
+  $inputText.val($inputText.val() + ' ' + suggested);
+}
 
 function hashtagify(text) {
   var hashtagified = '';
@@ -51,7 +71,27 @@ function hashtagify(text) {
   return result.join(' ');
 }
 
+function findSuggestions(text, callback) {
+  var split = text.split(/\s/);
+  if (split instanceof Array) {
+    // only get first word hurrdurr
+    var word = split[0].trim().replace(/#/,'');
+    var ajaxUrl = '/api/'+word;
+    console.log(ajaxUrl);
+    $.ajax({
+      url: ajaxUrl,
+      success: function(result) {
+        callback(result);
+      },
+      error: function(jqXHR, textStatus, err) {
+        console.error(err);
+        callback([]);
+      }
+    });
+  }
+}
+
 function copyAll() {
   $inputText.select();
-  // $result.select();
 }
+
