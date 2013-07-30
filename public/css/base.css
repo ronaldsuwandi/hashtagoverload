@@ -15,8 +15,10 @@ div {
 
 /* title */
 .main-title {
-  font-family: 'Futura';
+  font-family: "Courier Bold", Courier, Georgia, Times, "Times New Roman", serif;
   text-transform: uppercase;
+  text-align: center;
+  font-size: 70px;
 }
 
 .l-main-title {
@@ -142,4 +144,8 @@ h1 {
 
 .l-footer {
   margin-top: 4em;
+}
+
+.bottom-text {
+  color: #fd6030;
 }
