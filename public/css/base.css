@@ -27,12 +27,47 @@ div {
   padding-right: 5px;
 }
 
-body {
-  /*max-width: 1024px;*/
+/* title */
+.main-title {
+  font-family: 'Futura';
+  text-transform: uppercase;
+}
+
+/* main */
+.hashtagoverload-app {
+  background-color:   #ffce0a;
+  /*background: url('/assets/img/background.png') no-repeat center center fixed;*/
+
+  min-height: 300px;
+  height:300px;
+}
+
+.l-hashtagoverload-app {
+  padding: 10px 0px 10px 0px;
+}
+
+/* list of hashtags */
+.hashtags {
+  color: #202020;
+  text-decoration: underline;
+}
+
+.l-hashtags {
+  text-align: center;
 }
 
 .result-box {
   /*visibility: hidden;*/
+}
+
+.input-button {
+  border-radius:50%;
+  width:50px;
+  height:50px;
+}
+
+.l-input-button {
+  text-align: center;
 }
 
 .result {
@@ -90,6 +125,8 @@ h1 {
 .l-selected-main {
   margin: 5px 0px 5px 0px;
 }
+
+/* footer */
 
 .l-footer {
   position: absolute;

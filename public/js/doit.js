@@ -8,6 +8,7 @@ var clipboard;
 var $copy;
 var $suggestions;
 var $suggestionMain;
+var $hashtags;
 
 var spinnerOpts = {
   lines: 9, // The number of lines to draw
@@ -37,10 +38,16 @@ $(function() {
   $suggestions = $('.suggestions');
   $suggestionMain = $('.suggestion-main');
   $copy = $('.copy');
+
+  $('[data-typer-targets]').typer()
   spinner = new Spinner(spinnerOpts);
 
+
   $inputText.keypress(function(e) {
-    if (e.keyCode === 13) {
+    console.dir(e);
+    if (e.keyCode === 13 && !e.altKey && !e.ctrlKey && !e.shiftKey &&
+        !e.metaKey) {
+      e.preventDefault();
       $inputButton.click();
     }
   });

@@ -38,6 +38,8 @@ app.get('/about', function (req,res) {
 var apiUrl = 'http://words.bighugelabs.com/api/2/' + apiKey + '/';
 
 function getSynonyms(word, res) {
+
+  return res.send(['derp', 'x', 'kyaaa', 'jiji', 'banci']);
   request(apiUrl+word+'/json', function(err, response, body) {
     if (!err && response.statusCode == 200) {
       var json = JSON.parse(body);

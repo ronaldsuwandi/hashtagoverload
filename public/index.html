@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="css/base.css">
   <script src="js/lib/spin.min.js"></script>
   <script src="js/lib/jquery-2.0.3.min.js"></script>
+  <script src="js/lib/jquery.typer.min.js"></script>
   <script src="js/lib/ZeroClipboard.min.js"></script>
   <script src="js/doit.js" defer></script>
   <!-- Google Analytics code -->
@@ -23,22 +24,29 @@
   </script>
 </head>
 <body>
-  <section class="container" id="hashtagoverload-app">
-    <div class="pure-g-r main-title">
+  <section class="header">
+    <div class="pure-g-r">
       <div class="pure-u-1">
-        <h1>
+        <h1 class="main-title">
           #hashtagoverload
         </h1>
       </div>
-      <div class="pure-u-1 sub-title">
-        #when #you #can't #get #enough #of #hashtags
+    </div>
+  </section>
+
+  <section class="container hashtagoverload-app l-hashtagoverload-app">
+    <div class="pure-g">
+      <div class="pure-u-1">
+        <h3 class="l-hashtags">
+          #<span class = "js-hashtags hashtags" data-typer-targets="25likes, instababy, sohappy, fun, girl, believeinfilm, ilovemyhubby, filmisnotdead, swag, yolo, instafashion, iphonesia, instaday, ootd, lotd, food, instafamily, homemade, funnight, lovemyfamily, wifeymode, hopehelikesit, myhusbandrocks, mywaifurocks, casualday, loveher, lovehim, sexy, xoxo, selfie">yolo</span>
+        </h3>
       </div>
     </div>
     <div class="pure-g main-inputs l-main-inputs pure-form">
-      <div class="pure-u-3-4">
-        <input class="pure-input-1 input-text js-input-text" type="text" autofocus placeholder="Text to be hashtagified" id="hashtagified-text">
+      <div class="pure-u-7-8">
+        <textarea class="pure-input-1 input-text js-input-text" type="text" autofocus placeholder="Text to be hashtagified" rows="2", col="12" id="hashtagified-text"></textarea>
       </div>
-      <div class="pure-u-1-4">
+      <div class="pure-u-1-8">
         <div class="pure-button pure-button-primary input-button" id="input-button" id="input-button">#</div>
       </div>
     </div>
@@ -46,8 +54,10 @@
       <div class="pure-u-1-8">Suggestions</div>
       <div class="pure-u-7-8 suggestions"></div>
     </div>
+  </section>
 
-  	<div class="pure-g l-footer">
+  <section class="l-footer">
+  	<div class="pure-g">
       <div class="pure-u-1">
         <a href="/about">Who made this?</a>
         <div class="fb-like" data-href="https://www.facebook.com/hashtagoverloadme" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
