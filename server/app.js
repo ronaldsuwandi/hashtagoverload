@@ -31,6 +31,10 @@ app.get('/api/:word', function(req,res) {
   getSynonyms(req.params.word, res);
 });
 
+app.get('/about', function (req,res) {
+	res.sendfile(path.join(__dirname, '..', 'public', 'about', 'about.html'));
+});
+
 var apiUrl = 'http://words.bighugelabs.com/api/2/' + apiKey + '/';
 
 function getSynonyms(word, res) {
@@ -39,7 +43,6 @@ function getSynonyms(word, res) {
       var json = JSON.parse(body);
 
       var result = json[Object.keys(json)[0]];
-      console.log(result);
       var resultWords = [];
 
       if (result) {
