@@ -1,20 +1,4 @@
 /* fonts */
-@font-face {
-  font-family: 'Didot';
-  src: url('../font/didot.ttf');
-}
-@font-face {
-  font-family: 'GillSans';
-  src: url('../font/gillsans.ttf');
-}
-@font-face {
-  font-family: 'Hoefler Text';
-  src: url('../font/hoefler_text.ttf');
-}
-@font-face {
-  font-family: 'Marion';
-  src: url('../font/marion.ttf');
-}
 
 * {
   box-sizing:border-box;
@@ -29,8 +13,10 @@ div {
 
 /* title */
 .main-title {
-  font-family: 'Futura';
+  font-family: "Courier Bold", Courier, Georgia, Times, "Times New Roman", serif;
   text-transform: uppercase;
+  text-align: center;
+  font-size: 70px;
 }
 
 /* main */
@@ -41,7 +27,7 @@ div {
   min-height: 300px;
   height:300px;
 }
-
+*
 .l-hashtagoverload-app {
   padding: 10px 0px 10px 0px;
 }
@@ -142,4 +128,8 @@ h1 {
 
 .l-footer {
   margin-top: 4em;
+}
+
+.bottom-text {
+  color: #fd6030;
 }
