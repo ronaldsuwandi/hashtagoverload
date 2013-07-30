@@ -28,7 +28,7 @@ div {
 /* main */
 .hashtagoverload-app {
   background-color:   #ffce0a;
-
+  background: url('/assets/img/background.png');
   min-height: 300px;
 }
 
@@ -42,14 +42,27 @@ div {
 
 .small-input-button {
   display: none;
+  font-family: 'courier';
 }
 
 .l-input-button {
   text-align: center;
-  margin: 5px;
+  margin: 5px 0px 5px 0px;
 }
 
-@media (max-width: 700px) {
+.l-small-input-button {
+  margin: 5px 0px 5px 0px;
+}
+
+.l-big-input-button {
+  display: inline-block;
+}
+
+@media (max-width: 767px) {
+  .main-title {
+    font-size: 30px;
+  }
+
   .big-input-button {
     display: none;
   }
@@ -61,7 +74,7 @@ div {
 /* list of hashtags */
 .hashtags {
   color: #202020;
-  text-decoration: underline;
+  font-family: 'futura';
 }
 
 .l-hashtags {
@@ -88,13 +101,13 @@ a:hover {
 
 h1 {
   margin-top:10px;
-  margin-bottom:10px;
+  margin-bottom:0px;
 }
 
 .suggestion {
   cursor: pointer;
   border-radius: 5px;
-  background-color:#4c8fda;
+  background-color:#878685;
   color: white;
   transition: all 0.2s ease-out;
   -webkit-transition: all 0.2s ease-out;
@@ -111,12 +124,28 @@ h1 {
 }
 
 .suggestion:hover {
-  background-color:#7ac0eb;
+  background-color:#9e9e9e;
   color: white;
 }
 
 .suggestion-main {
   margin-top: 5px;
+}
+
+.l-suggestion-label {
+  display:inline-block;
+  text-align: center;
+  margin: 5px 0px 0px 0px;
+}
+
+.suggestion-label {
+  text-transform: uppercase;
+  font-size:11px;
+}
+
+.l-suggestions {
+  display:inline-block;
+  text-align: center;
 }
 
 .loading {
@@ -125,7 +154,9 @@ h1 {
 }
 
 .premium-text {
-  color: #fd6030;
+  color: #972e0e;
+  font-size: 15px;
+  font-family: 'courier';
 }
 
 .l-suggestion-main {
@@ -148,4 +179,21 @@ h1 {
 
 .bottom-text {
   color: #fd6030;
+  text-transform: uppercase;
+  font-size: 15px;
+  font-family: 'courier';
+}
+
+.underline {
+ text-decoration: underline;
+}
+
+.subtitle {
+  font-size: 16px;
+  font-family: 'futura';
+  color: #f31818;
+}
+
+.l-subtitle {
+  margin: 0px 0px 5px 0px;
 }

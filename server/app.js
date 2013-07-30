@@ -15,8 +15,7 @@ app.configure(function() {
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(express.compress());
-  app.use(express.favicon());
-
+  app.use(express.favicon(__dirname + '/public/favicon.png'));
   app.use(express.static(path.join(__dirname, '..', 'public')));
   app.use(express.errorHandler({ dumpException: true, showStack: true}));
 });
@@ -34,8 +33,6 @@ app.get('/api/:word', function(req,res) {
 var apiUrl = 'http://words.bighugelabs.com/api/2/' + apiKey + '/';
 
 function getSynonyms(word, res) {
-
-  return res.send(['derp', 'x', 'kyaaa', 'jiji', 'banci']);
   request(apiUrl+word+'/json', function(err, response, body) {
     if (!err && response.statusCode == 200) {
       var json = JSON.parse(body);

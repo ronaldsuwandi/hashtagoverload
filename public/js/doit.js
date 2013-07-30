@@ -48,7 +48,6 @@ $(function() {
 
 
   $inputText.keypress(function(e) {
-    console.dir(e);
     if (e.keyCode === 13 && !e.altKey && !e.ctrlKey && !e.shiftKey &&
         !e.metaKey) {
       e.preventDefault();
@@ -123,7 +122,6 @@ function findSuggestions(text, callback) {
     // only get first word hurrdurr
     var word = split[0].trim().replace(/#/,'');
     var ajaxUrl = '/api/'+word;
-    console.log(ajaxUrl);
     $.ajax({
       url: ajaxUrl,
       success: function(result) {
