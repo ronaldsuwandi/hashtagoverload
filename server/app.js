@@ -31,10 +31,6 @@ app.get('/api/:word', function(req,res) {
   getSynonyms(req.params.word, res);
 });
 
-app.get('/about', function (req,res) {
-	res.sendfile(path.join(__dirname, '..', 'public', 'about', 'about.html'));
-});
-
 var apiUrl = 'http://words.bighugelabs.com/api/2/' + apiKey + '/';
 
 function getSynonyms(word, res) {
