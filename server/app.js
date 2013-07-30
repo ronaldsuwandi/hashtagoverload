@@ -68,6 +68,3 @@ function getSynonyms(word, res) {
     }
   });
 }
-
-// location-based (wwdc conference)
-// freinds
